@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skriv.ist - Your reading sanctuary.</title>
+    <meta name="description" content="A minimalist, harmonic reading environment designed to quiet the noise and let you focus on the story.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* The Nordic Pastel Palette */
+            --sky-blue: #d4e9f7;
+            --mint-green: #d0f0c0;
+            --organic-white: #f8fbf8;
+            --text-dark: #2c3e50;
+            --text-soft: #5a7684;
+            --accent-gold: #e6c229; /* A tiny touch of warmth */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--organic-white) 50%, var(--mint-green) 100%);
+            color: var(--text-dark);
+            font-family: 'Lato', sans-serif;
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* The "Fairies/Feathers" - subtle floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+            animation: floatUp 15s infinite linear;
+            bottom: -50px;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.7; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Main container - floating card effect */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(174, 198, 207, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: #8ab6d6; /* Slightly deeper blue for accent */
+            font-style: italic;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+            font-weight: 300;
+        }
+
+        /* Gentle CTA */
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 4rem;
+        }
+
+        input[type="email"] {
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid #dceefb;
+            background: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            width: 300px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        input[type="email"]:focus {
+            border-color: #8ab6d6;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(to right, #8ab6d6, #a4d4ae);
+            color: white;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 5px 15px rgba(164, 212, 174, 0.4);
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(164, 212, 174, 0.6);
+        }
+
+        /* Harmonic Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .feature h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature p {
+            color: var(--text-soft);
+            font-weight: 300;
+        }
+        
+        /* Subtle organic icons using CSS shapes */
+        .icon-organic {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1.5rem auto;
+            background: linear-gradient(135deg, #e0f2fe, #dcfce7);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 8s ease-in-out infinite;
+        }
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: var(--text-soft);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                margin: 2rem 1rem;
+                padding: 2rem;
+            }
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            input[type="email"] {
+                width: 100%;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles">
+        <div class="particle" style="left: 10%; width: 20px; height: 20px; animation-duration: 18s; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 30%; width: 15px; height: 15px; animation-duration: 12s; animation-delay: 2s; filter: blur(2px);"></div>
+        <div class="particle" style="left: 50%; width: 25px; height: 25px; animation-duration: 20s; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 70%; width: 10px; height: 10px; animation-duration: 15s; animation-delay: 1s; filter: blur(1px);"></div>
+        <div class="particle" style="left: 90%; width: 18px; height: 18px; animation-duration: 14s; animation-delay: 3s;"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">skriv<span>.ist</span></div>
+        </header>
+
+        <main style="text-align: center;">
+            <section class="hero-section">
+                <h1>Where stories find <br>their breath.</h1>
+                <p class="hero-sub">
+                    A quiet, minimalist reading sanctuary designed to soften the noise and let your mind wander freely through the pages.
+                </p>
+                
+                <form class="cta-group" onsubmit="event.preventDefault(); alert('Thank you. We will whisper when it is ready.');">
+                    <input type="email" placeholder="Enter your email address..." required>
+                    <button type="submit">Join the Waitlist</button>
+                </form>
+            </section>
+
+            <section class="features-grid">
+                <div class="feature">
+                    <div class="icon-organic"></div>
+                    <h3>A Gentle Space</h3>
+                    <p>Free from algorithmic distractions, social feeds, and gamification. Just a calm canvas for your thoughts and the text.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon-organic" style="animation-delay: -2s;"></div>
+                    <h3>Natural Sync</h3>
+                    <p>Your library flows effortlessly between your devices. Read offline in peace; we quietly handle the rest when you reconnect.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon-organic" style="animation-delay: -4s;"></div>
+                    <h3>Harmonic Formats</h3>
+                    <p>Bring your cherished collection home. We provide a beautiful, unified experience for your EPUBs.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 scriv.ist | Crafted with care | By <a href="https://gand.tr">gand.tr</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
