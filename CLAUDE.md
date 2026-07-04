@@ -26,7 +26,9 @@
 │   └── poster-{lang}[-vertical].jpg        # poster frames
 ├── .github/workflows/deploy.yml  # Manual-dispatch Cloudflare Pages deploy
 ├── .project-instructions.md   # Design/SEO context for developers
-├── robots.txt                 # Search engine directives
+├── robots.txt                 # Search engine directives (+ sitemap reference)
+├── sitemap.xml                # Single-URL sitemap for https://skriv.ist/
+├── 404.html                   # Real 404 page — disables Cloudflare Pages' SPA fallback
 └── CLAUDE.md                  # This file
 ```
 
@@ -72,7 +74,7 @@
 - **Primary CTA** - "Start Reading for Free" links to the app at `app.skriv.ist`; the hero promo video and pricing tiers (Free / Maker / Member) support conversion. There is no email/waitlist form.
 - **Mobile responsive** - media queries at the 600px breakpoint for mobile layout.
 - **Hero promo video** - locale-aware (swaps per language) and orientation-aware: `updateHeroVideo()` serves the vertical 9:16 cut on mobile (≤600px) and the landscape 16:9 cut on desktop, keyed to the same 600px breakpoint as the CSS. Sources and posters follow `media/skrivist-promo-{lang}[-vertical].mp4` / `media/poster-{lang}[-vertical].jpg`.
-- **SEO is configured** - OG/Twitter cards, JSON-LD schema, keywords meta, robots.txt are all in place.
+- **SEO is configured** - canonical tag, OG/Twitter cards, JSON-LD schema, keywords meta, robots.txt + sitemap.xml, and 404.html are all in place. New static files must also be added to the "Assemble site bundle" step in `deploy.yml`. The www→apex 301 lives in a Cloudflare zone **Redirect Rule** (dashboard: Rules → Redirect Rules), NOT in a Pages `_redirects` file — Pages `_redirects` cannot match on hostname.
 
 ## Working With This Project
 
