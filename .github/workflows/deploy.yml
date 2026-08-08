@@ -40,7 +40,7 @@ jobs:
       - name: Assemble site bundle
         run: |
           mkdir -p dist
-          cp index.html 404.html robots.txt sitemap.xml dist/
+          cp index.html 404.html robots.txt sitemap.xml llms.txt dist/
           cp -r media dist/media
 
       - name: Ensure Pages project exists
