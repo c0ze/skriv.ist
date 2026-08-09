@@ -616,6 +616,14 @@
             text-decoration: underline;
         }
 
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 600px) {
             .container {
@@ -1266,6 +1274,11 @@
         </main>
 
         <footer>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="/privacy" data-i18n="footerPrivacy">Privacy</a>
+                <a href="/terms" data-i18n="footerTerms">Terms</a>
+                <a href="/support" data-i18n="footerSupport">Support</a>
+            </nav>
             <p><span data-i18n="footerCopy">&copy; 2026 skriv.ist | Crafted with care</span> | <span data-i18n="footerBy">By</span> <a href="https://gand.tr">gand.tr</a></p>
         </footer>
     </div>
@@ -1316,6 +1329,9 @@
                 ctaPremium: 'Start Free Trial',
                 footerCopy: '© 2026 skriv.ist | Crafted with care',
                 footerBy: 'By',
+                footerPrivacy: 'Privacy',
+                footerTerms: 'Terms',
+                footerSupport: 'Support',
                 label: 'EN'
             },
             ja: {
@@ -1359,6 +1375,9 @@
                 ctaPremium: '無料トライアルを開始',
                 footerCopy: '© 2026 skriv.ist | 丁寧に作られました',
                 footerBy: '',
+                footerPrivacy: 'プライバシー',
+                footerTerms: '利用規約',
+                footerSupport: 'サポート',
                 label: 'JA'
             },
             tr: {
@@ -1402,6 +1421,9 @@
                 ctaPremium: 'Ücretsiz Denemeyi Başlat',
                 footerCopy: '© 2026 skriv.ist | Özenle yapıldı',
                 footerBy: '',
+                footerPrivacy: 'Gizlilik',
+                footerTerms: 'Koşullar',
+                footerSupport: 'Destek',
                 label: 'TR'
             },
             es: {
@@ -1445,6 +1467,9 @@
                 ctaPremium: 'Iniciar Prueba Gratuita',
                 footerCopy: '© 2026 skriv.ist | Hecho con cuidado',
                 footerBy: 'Por',
+                footerPrivacy: 'Privacidad',
+                footerTerms: 'Términos',
+                footerSupport: 'Soporte',
                 label: 'ES'
             },
             pt: {
@@ -1488,6 +1513,9 @@
                 ctaPremium: 'Iniciar Teste Grátis',
                 footerCopy: '© 2026 skriv.ist | Feito com cuidado',
                 footerBy: 'Por',
+                footerPrivacy: 'Privacidade',
+                footerTerms: 'Termos',
+                footerSupport: 'Suporte',
                 label: 'PT'
             },
             de: {
@@ -1531,6 +1559,9 @@
                 ctaPremium: 'Kostenlos Testen',
                 footerCopy: '© 2026 skriv.ist | Mit Sorgfalt gefertigt',
                 footerBy: 'Von',
+                footerPrivacy: 'Datenschutz',
+                footerTerms: 'Nutzungsbedingungen',
+                footerSupport: 'Support',
                 label: 'DE'
             },
             fr: {
@@ -1574,6 +1605,9 @@
                 ctaPremium: 'Démarrer l\'essai gratuit',
                 footerCopy: '© 2026 skriv.ist | Fait avec soin',
                 footerBy: 'Par',
+                footerPrivacy: 'Confidentialité',
+                footerTerms: 'Conditions',
+                footerSupport: 'Support',
                 label: 'FR'
             }
         };

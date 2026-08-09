@@ -14,12 +14,15 @@
 - Pure HTML + CSS (no frameworks, no build tools, no package manager)
 - Google Fonts: Playfair Display (headings), Lato (body)
 - Minimal inline JS (theme toggle + language switcher + locale/orientation-aware hero video + scroll-reveal)
-- Everything lives in a single `index.html`; promo video assets live in `media/`
+- The marketing page lives in `index.html`; legal/submission pages are standalone static files; promo video assets live in `media/`
 
 ## Project Structure
 
 ```
-├── index.html                 # The entire site (HTML + CSS + JS)
+├── index.html                 # Marketing landing page (HTML + CSS + JS)
+├── privacy.html               # Privacy Policy (app-store submission required)
+├── terms.html                 # Terms of Service (app-store submission required)
+├── support.html               # Support & account deletion (app-store submission required)
 ├── media/                     # Hero promo video assets, per locale (en, ja, tr, es, pt, de, fr)
 │   ├── skrivist-promo-{lang}.mp4           # landscape 16:9 (desktop)
 │   ├── skrivist-promo-{lang}-vertical.mp4  # portrait 9:16 (mobile)
@@ -27,7 +30,7 @@
 ├── .github/workflows/deploy.yml  # Manual-dispatch Cloudflare Pages deploy
 ├── .project-instructions.md   # Design/SEO context for developers
 ├── robots.txt                 # Search engine directives (+ sitemap reference)
-├── sitemap.xml                # Single-URL sitemap for https://skriv.ist/
+├── sitemap.xml                # Sitemap for https://skriv.ist/
 ├── 404.html                   # Real 404 page — disables Cloudflare Pages' SPA fallback
 └── CLAUDE.md                  # This file
 ```

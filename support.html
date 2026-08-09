@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — skriv.ist</title>
+    <meta name="description" content="Support, contact, and account information for skriv.ist.">
+    <link rel="canonical" href="https://skriv.ist/support">
+    <link rel="icon" type="image/svg+xml" href="/media/favicon.svg" />
+
+    <meta property="og:title" content="Support — skriv.ist" />
+    <meta property="og:description" content="Get help with skriv.ist." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://skriv.ist/support" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Noto+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-gradient-1: #dae8f3;
+            --bg-gradient-2: #f5f7f5;
+            --bg-gradient-3: #d5ecd0;
+            --surface-primary: rgba(255, 255, 255, 0.9);
+            --surface-border: rgba(0, 0, 0, 0.06);
+            --surface-shadow-1: rgba(0, 0, 0, 0.04);
+            --surface-shadow-2: rgba(0, 0, 0, 0.06);
+            --text-primary: #1a2b3c;
+            --text-secondary: #5a6e7a;
+            --text-tertiary: #8a9aa6;
+            --accent-primary: #6a9fc0;
+            --accent-secondary: #7db88a;
+            --link-color: #6a9fc0;
+            --divider: rgba(0, 0, 0, 0.06);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-gradient-1: #0f1923;
+                --bg-gradient-2: #141e28;
+                --bg-gradient-3: #111d1a;
+                --surface-primary: rgba(20, 30, 40, 0.85);
+                --surface-border: rgba(255, 255, 255, 0.08);
+                --surface-shadow-1: rgba(0, 0, 0, 0.2);
+                --surface-shadow-2: rgba(0, 0, 0, 0.3);
+                --text-primary: #e2e8f0;
+                --text-secondary: #94a3b8;
+                --text-tertiary: #64748b;
+                --accent-primary: #7cb5d6;
+                --accent-secondary: #8ec99a;
+                --link-color: #7cb5d6;
+                --divider: rgba(255, 255, 255, 0.08);
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 50%, var(--bg-gradient-3) 100%);
+            color: var(--text-primary);
+            font-family: 'Lato', 'Noto Sans', sans-serif;
+            font-synthesis: none;
+            line-height: 1.75;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover { text-decoration: underline; }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--text-primary);
+            color: var(--surface-primary);
+            padding: 8px 16px;
+            z-index: 100;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus { top: 0; }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            margin: 4rem auto;
+            padding: 3rem 3.5rem;
+            background: var(--surface-primary);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow:
+                0 1px 2px var(--surface-shadow-1),
+                0 4px 8px var(--surface-shadow-1),
+                0 16px 32px var(--surface-shadow-2);
+            border: 1px solid var(--surface-border);
+        }
+
+        header { margin-bottom: 2.5rem; }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            letter-spacing: 2px;
+            display: inline-block;
+        }
+
+        .logo span { color: var(--accent-primary); font-style: italic; }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul, ol { padding-left: 1.5rem; }
+
+        li { margin-bottom: 0.35rem; }
+
+        strong { color: var(--text-primary); font-weight: 700; }
+
+        .contact-box {
+            background: var(--bg-gradient-2);
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-box p:last-child { margin-bottom: 0; }
+
+        .email-link {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--divider);
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+        }
+
+        footer nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 1.5rem 1rem;
+                padding: 2rem 1.5rem;
+            }
+            h1 { font-size: 1.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <div class="container">
+        <header>
+            <a href="/" class="logo">skriv<span>.ist</span></a>
+        </header>
+
+        <main id="main">
+            <h1>Support</h1>
+            <p class="subtitle">We're here to help. Find answers below or reach out directly.</p>
+
+            <div class="contact-box">
+                <h3>Contact us</h3>
+                <p>For bug reports, feature requests, billing questions, or anything else:</p>
+                <p><a href="mailto:contact@gand.tr" class="email-link">contact@gand.tr</a></p>
+                <p>We typically respond within 2 business days.</p>
+            </div>
+
+            <h2>Account deletion</h2>
+            <p>You can request deletion of your skriv.ist account and all associated data at any time. To do so, send an email to <a href="mailto:contact@gand.tr">contact@gand.tr</a> with the subject line <strong>Account Deletion Request</strong> from the email address associated with your account.</p>
+            <p>We will delete the following data within 30 days:</p>
+            <ul>
+                <li>Your account profile and authentication record</li>
+                <li>All books uploaded to your cloud library</li>
+                <li>Reading progress, bookmarks, highlights, and settings</li>
+                <li>API keys and subscription entitlements managed by us</li>
+            </ul>
+            <p>Some information may be retained longer if required by law or for legitimate business purposes such as fraud prevention, accounting, or enforcing our Terms. Local data stored on your device can be removed by clearing the app's data or uninstalling the app.</p>
+
+            <h2>Frequently asked questions</h2>
+
+            <div class="faq-item">
+                <h3>How do I install skriv.ist as an app?</h3>
+                <p>skriv.ist works as a Progressive Web App (PWA). Open <a href="https://app.skriv.ist">app.skriv.ist</a> in a supported browser and use the browser's "Install" or "Add to Home Screen" option.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Does skriv.ist work offline?</h3>
+                <p>Yes. Once books are loaded, they are cached locally and can be read without an internet connection. Your reading progress will sync when you reconnect.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What file formats are supported?</h3>
+                <p>skriv.ist supports EPUB files. You can upload books from your device or connect remote OPDS catalogs and Calibre libraries on supported plans.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I manage or cancel my subscription?</h3>
+                <p>Open the Settings panel in the app and choose "Manage account" to view billing details, update payment methods, or cancel your subscription.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is my reading data private?</h3>
+                <p>Yes. We do not sell your data or use it to train models. Your uploaded books and reading progress are stored only to provide sync and offline access. See our <a href="/privacy">Privacy Policy</a> for details.</p>
+            </div>
+
+            <h2>Legal</h2>
+            <ul>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms of Service</a></li>
+            </ul>
+        </main>
+
+        <footer>
+            <nav aria-label="Legal">
+                <a href="/">Home</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </nav>
+            <p>&copy; 2026 skriv.ist · Crafted with care by <a href="https://gand.tr">Gand Technology Services</a></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — skriv.ist</title>
+    <meta name="description" content="Privacy Policy for skriv.ist, the minimalist reading app.">
+    <link rel="canonical" href="https://skriv.ist/privacy">
+    <link rel="icon" type="image/svg+xml" href="/media/favicon.svg" />
+
+    <meta property="og:title" content="Privacy Policy — skriv.ist" />
+    <meta property="og:description" content="How skriv.ist handles your data." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://skriv.ist/privacy" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Noto+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-gradient-1: #dae8f3;
+            --bg-gradient-2: #f5f7f5;
+            --bg-gradient-3: #d5ecd0;
+            --surface-primary: rgba(255, 255, 255, 0.9);
+            --surface-border: rgba(0, 0, 0, 0.06);
+            --surface-shadow-1: rgba(0, 0, 0, 0.04);
+            --surface-shadow-2: rgba(0, 0, 0, 0.06);
+            --text-primary: #1a2b3c;
+            --text-secondary: #5a6e7a;
+            --text-tertiary: #8a9aa6;
+            --accent-primary: #6a9fc0;
+            --accent-secondary: #7db88a;
+            --link-color: #6a9fc0;
+            --divider: rgba(0, 0, 0, 0.06);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-gradient-1: #0f1923;
+                --bg-gradient-2: #141e28;
+                --bg-gradient-3: #111d1a;
+                --surface-primary: rgba(20, 30, 40, 0.85);
+                --surface-border: rgba(255, 255, 255, 0.08);
+                --surface-shadow-1: rgba(0, 0, 0, 0.2);
+                --surface-shadow-2: rgba(0, 0, 0, 0.3);
+                --text-primary: #e2e8f0;
+                --text-secondary: #94a3b8;
+                --text-tertiary: #64748b;
+                --accent-primary: #7cb5d6;
+                --accent-secondary: #8ec99a;
+                --link-color: #7cb5d6;
+                --divider: rgba(255, 255, 255, 0.08);
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 50%, var(--bg-gradient-3) 100%);
+            color: var(--text-primary);
+            font-family: 'Lato', 'Noto Sans', sans-serif;
+            font-synthesis: none;
+            line-height: 1.75;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover { text-decoration: underline; }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--text-primary);
+            color: var(--surface-primary);
+            padding: 8px 16px;
+            z-index: 100;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus { top: 0; }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            margin: 4rem auto;
+            padding: 3rem 3.5rem;
+            background: var(--surface-primary);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow:
+                0 1px 2px var(--surface-shadow-1),
+                0 4px 8px var(--surface-shadow-1),
+                0 16px 32px var(--surface-shadow-2);
+            border: 1px solid var(--surface-border);
+        }
+
+        header { margin-bottom: 2.5rem; }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            letter-spacing: 2px;
+            display: inline-block;
+        }
+
+        .logo span { color: var(--accent-primary); font-style: italic; }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .last-updated {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul, ol { padding-left: 1.5rem; }
+
+        li { margin-bottom: 0.35rem; }
+
+        strong { color: var(--text-primary); font-weight: 700; }
+
+        .contact-box {
+            background: var(--bg-gradient-2);
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-box p { margin-bottom: 0; }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--divider);
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+        }
+
+        footer nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 1.5rem 1rem;
+                padding: 2rem 1.5rem;
+            }
+            h1 { font-size: 1.9rem; }
+        }
+    </style>
+
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <div class="container">
+        <header>
+            <a href="/" class="logo">skriv<span>.ist</span></a>
+        </header>
+
+        <main id="main">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last updated: August 9, 2026</p>
+
+            <p>This Privacy Policy explains how <strong>Gand Technology Services</strong> ("Gand", "we", "us", or "our") collects, uses, stores, and protects your personal information when you use the <strong>skriv.ist</strong> website and reading application (the "Service"). By using the Service, you agree to the practices described in this policy.</p>
+
+            <h2>1. Information we collect</h2>
+
+            <h3>Account information</h3>
+            <p>When you sign in, we collect the information provided by your authentication provider (Google sign-in), which typically includes your email address, a unique user identifier, and display name. We use this solely to identify your account and sync your library across devices.</p>
+
+            <h3>Your books and reading data</h3>
+            <p>To provide cloud sync, we store the EPUB files you upload, cover images, book metadata, reading progress (current location/CFI), bookmarks, highlights, and your reading preferences. Free-tier accounts have a limited number of cloud books; paid accounts have a higher limit.</p>
+
+            <h3>Local device data</h3>
+            <p>The Service is designed to work offline. Books and reading data may be cached locally on your device using IndexedDB or similar browser storage. Theme and language preferences are stored in your browser's localStorage.</p>
+
+            <h3>Usage and diagnostic data</h3>
+            <p>We collect anonymized usage and error data to keep the Service reliable and improve performance. This may include crash logs, generic interaction patterns, and technical information such as browser type, device type, and operating system. We do not track individual reading behavior for advertising or profiling.</p>
+
+            <h3>Payment information</h3>
+            <p>Purchases and subscriptions are processed by our payment partner, Polar. We do not collect or store your credit card details. Polar provides us with transaction identifiers and subscription status so we can manage your entitlements.</p>
+
+            <h2>2. How we use your information</h2>
+            <ul>
+                <li>To provide, operate, and maintain the Service</li>
+                <li>To sync your library, progress, and settings across your devices</li>
+                <li>To authenticate you and secure your account</li>
+                <li>To process payments and manage subscriptions</li>
+                <li>To communicate with you about your account, updates, or support requests</li>
+                <li>To diagnose issues and improve the Service</li>
+            </ul>
+
+            <h2>3. How we share your information</h2>
+            <p>We do not sell your personal information. We share data only with trusted service providers who help us operate the Service:</p>
+            <ul>
+                <li><strong>Google Firebase</strong> — authentication, cloud database (Firestore), and cloud storage</li>
+                <li><strong>Polar</strong> — payment processing and subscription management</li>
+                <li><strong>Cloudflare</strong> — website hosting, analytics, and security</li>
+            </ul>
+            <p>We may also disclose information if required by law, to protect our rights, or to prevent harm.</p>
+
+            <h2>4. Data retention</h2>
+            <p>We keep your account data and uploaded books for as long as your account is active. If you delete your account, we will remove your personal information and uploaded content from our active systems within a reasonable period, typically within 30 days. Some anonymized or aggregated data may be retained for analytics and security purposes.</p>
+
+            <h2>5. Your rights and choices</h2>
+            <p>Depending on your location, you may have the right to access, correct, export, or delete your personal information. You can request account deletion at any time by contacting us. You may also manage cookies and local storage through your browser settings.</p>
+
+            <h2>6. Security</h2>
+            <p>We use industry-standard measures to protect your data, including encryption in transit (HTTPS/TLS) and access controls. However, no online service can guarantee absolute security. Please use a strong, unique password for your authentication provider.</p>
+
+            <h2>7. Children's privacy</h2>
+            <p>The Service is not intended for children under 13 years of age (or the minimum legal age in your jurisdiction). We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us and we will delete it.</p>
+
+            <h2>8. International transfers</h2>
+            <p>Your data may be stored and processed in countries other than your own, including on servers operated by Google Cloud and Cloudflare. We rely on appropriate safeguards, such as standard contractual clauses, to protect your data during international transfers.</p>
+
+            <h2>9. Changes to this policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will post the revised policy on this page with an updated "Last updated" date. Continued use of the Service after changes constitutes acceptance of the updated policy.</p>
+
+            <h2>10. Contact us</h2>
+            <div class="contact-box">
+                <p>If you have questions, concerns, or requests regarding this Privacy Policy or your data, please contact us at <a href="mailto:contact@gand.tr">contact@gand.tr</a>.</p>
+            </div>
+        </main>
+
+        <footer>
+            <nav aria-label="Legal">
+                <a href="/">Home</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/support">Support</a>
+            </nav>
+            <p>&copy; 2026 skriv.ist · Crafted with care by <a href="https://gand.tr">Gand Technology Services</a></p>
+        </footer>
+    </div>
+</body>
+</html>

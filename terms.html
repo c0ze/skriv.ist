@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service — skriv.ist</title>
+    <meta name="description" content="Terms of Service for skriv.ist, the minimalist reading app.">
+    <link rel="canonical" href="https://skriv.ist/terms">
+    <link rel="icon" type="image/svg+xml" href="/media/favicon.svg" />
+
+    <meta property="og:title" content="Terms of Service — skriv.ist" />
+    <meta property="og:description" content="Terms governing use of skriv.ist." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://skriv.ist/terms" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Noto+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-gradient-1: #dae8f3;
+            --bg-gradient-2: #f5f7f5;
+            --bg-gradient-3: #d5ecd0;
+            --surface-primary: rgba(255, 255, 255, 0.9);
+            --surface-border: rgba(0, 0, 0, 0.06);
+            --surface-shadow-1: rgba(0, 0, 0, 0.04);
+            --surface-shadow-2: rgba(0, 0, 0, 0.06);
+            --text-primary: #1a2b3c;
+            --text-secondary: #5a6e7a;
+            --text-tertiary: #8a9aa6;
+            --accent-primary: #6a9fc0;
+            --accent-secondary: #7db88a;
+            --link-color: #6a9fc0;
+            --divider: rgba(0, 0, 0, 0.06);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-gradient-1: #0f1923;
+                --bg-gradient-2: #141e28;
+                --bg-gradient-3: #111d1a;
+                --surface-primary: rgba(20, 30, 40, 0.85);
+                --surface-border: rgba(255, 255, 255, 0.08);
+                --surface-shadow-1: rgba(0, 0, 0, 0.2);
+                --surface-shadow-2: rgba(0, 0, 0, 0.3);
+                --text-primary: #e2e8f0;
+                --text-secondary: #94a3b8;
+                --text-tertiary: #64748b;
+                --accent-primary: #7cb5d6;
+                --accent-secondary: #8ec99a;
+                --link-color: #7cb5d6;
+                --divider: rgba(255, 255, 255, 0.08);
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 50%, var(--bg-gradient-3) 100%);
+            color: var(--text-primary);
+            font-family: 'Lato', 'Noto Sans', sans-serif;
+            font-synthesis: none;
+            line-height: 1.75;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover { text-decoration: underline; }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--text-primary);
+            color: var(--surface-primary);
+            padding: 8px 16px;
+            z-index: 100;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus { top: 0; }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            margin: 4rem auto;
+            padding: 3rem 3.5rem;
+            background: var(--surface-primary);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow:
+                0 1px 2px var(--surface-shadow-1),
+                0 4px 8px var(--surface-shadow-1),
+                0 16px 32px var(--surface-shadow-2);
+            border: 1px solid var(--surface-border);
+        }
+
+        header { margin-bottom: 2.5rem; }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            letter-spacing: 2px;
+            display: inline-block;
+        }
+
+        .logo span { color: var(--accent-primary); font-style: italic; }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .last-updated {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul, ol { padding-left: 1.5rem; }
+
+        li { margin-bottom: 0.35rem; }
+
+        strong { color: var(--text-primary); font-weight: 700; }
+
+        .contact-box {
+            background: var(--bg-gradient-2);
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-box p { margin-bottom: 0; }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--divider);
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+        }
+
+        footer nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 1.5rem 1rem;
+                padding: 2rem 1.5rem;
+            }
+            h1 { font-size: 1.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <div class="container">
+        <header>
+            <a href="/" class="logo">skriv<span>.ist</span></a>
+        </header>
+
+        <main id="main">
+            <h1>Terms of Service</h1>
+            <p class="last-updated">Last updated: August 9, 2026</p>
+
+            <p>These Terms of Service ("Terms") govern your access to and use of the <strong>skriv.ist</strong> website and reading application (the "Service") provided by <strong>Gand Technology Services</strong> ("Gand", "we", "us", or "our"). Please read these Terms carefully before using the Service.</p>
+
+            <h2>1. Acceptance of terms</h2>
+            <p>By creating an account, accessing, or using the Service, you agree to be bound by these Terms and our <a href="/privacy">Privacy Policy</a>. If you do not agree, do not use the Service.</p>
+
+            <h2>2. Eligibility</h2>
+            <p>You must be at least 13 years old (or the minimum legal age in your jurisdiction) to use the Service. By using the Service, you represent that you meet this requirement and that any information you provide is accurate and complete.</p>
+
+            <h2>3. Accounts and authentication</h2>
+            <p>The Service uses third-party authentication providers, currently Google sign-in, to create and secure your account. You are responsible for maintaining the confidentiality of your authentication credentials and for all activity that occurs under your account. Notify us immediately if you suspect unauthorized use.</p>
+
+            <h2>4. Your content</h2>
+
+            <h3>Uploads</h3>
+            <p>You may upload EPUB books and related content to the Service. You retain ownership of any content you upload. By uploading content, you grant us a limited license to store, process, and transmit it solely for the purpose of providing the Service to you, including syncing across your devices.</p>
+
+            <h3>Prohibited content</h3>
+            <p>You may not upload, store, or share content that:</p>
+            <ul>
+                <li>Violates any applicable law or regulation</li>
+                <li>Infringes intellectual property rights, privacy rights, or any other rights of others</li>
+                <li>Contains malware, viruses, or other harmful code</li>
+                <li>Is unlawful, abusive, threatening, defamatory, or obscene</li>
+            </ul>
+            <p>We reserve the right to remove content and suspend or terminate accounts that violate these rules.</p>
+
+            <h2>5. Service usage</h2>
+            <p>You agree to use the Service only for lawful purposes and in accordance with these Terms. You may not attempt to interfere with the Service's security, availability, or performance, or access data that does not belong to you.</p>
+
+            <h2>6. Subscriptions and payments</h2>
+            <p>Some features require a one-time purchase or subscription. Payments are processed by Polar. By purchasing, you agree to Polar's terms and the pricing shown at checkout. Subscriptions automatically renew unless canceled before the renewal date. You can manage or cancel your subscription through the account portal linked in the Service.</p>
+
+            <h2>7. Refunds</h2>
+            <p>Refund requests are handled on a case-by-case basis. If you believe you are entitled to a refund, please contact us within 14 days of the transaction. We do not provide refunds for partially used subscription periods except where required by law.</p>
+
+            <h2>8. Intellectual property</h2>
+            <p>The Service, including its design, code, trademarks, and branding, is owned by Gand Technology Services and protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works of the Service without our written permission.</p>
+
+            <h2>9. Termination</h2>
+            <p>You may stop using the Service at any time. We may suspend or terminate your access if you violate these Terms or if required by law. Upon termination, your right to use the Service ceases immediately; provisions that by their nature should survive termination will continue to apply.</p>
+
+            <h2>10. Disclaimers</h2>
+            <p>The Service is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that the Service will be uninterrupted, error-free, secure, or free of harmful components. You use the Service at your own risk.</p>
+
+            <h2>11. Limitation of liability</h2>
+            <p>To the fullest extent permitted by law, Gand Technology Services shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the Service. Our total liability shall not exceed the amount you paid to us in the 12 months preceding the claim, or 100 USD if no payment was made.</p>
+
+            <h2>12. Indemnification</h2>
+            <p>You agree to indemnify and hold harmless Gand Technology Services and its affiliates, officers, and employees from any claims, damages, or expenses arising out of your use of the Service, your content, or your violation of these Terms.</p>
+
+            <h2>13. Governing law</h2>
+            <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Türkiye, without regard to conflict of law principles. Any disputes shall be resolved in the courts located in Istanbul, Türkiye.</p>
+
+            <h2>14. Changes to these terms</h2>
+            <p>We may update these Terms from time to time. We will post the revised Terms on this page with an updated "Last updated" date. Continued use of the Service after changes constitutes acceptance of the updated Terms.</p>
+
+            <h2>15. Contact us</h2>
+            <div class="contact-box">
+                <p>If you have questions about these Terms, please contact us at <a href="mailto:contact@gand.tr">contact@gand.tr</a>.</p>
+            </div>
+        </main>
+
+        <footer>
+            <nav aria-label="Legal">
+                <a href="/">Home</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/support">Support</a>
+            </nav>
+            <p>&copy; 2026 skriv.ist · Crafted with care by <a href="https://gand.tr">Gand Technology Services</a></p>
+        </footer>
+    </div>
+</body>
+</html>
