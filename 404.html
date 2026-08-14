@@ -8,16 +8,47 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <script>
+    /* Anti-flash: apply the theme stored by index.html before first paint, so a
+       visitor who forced Light does not get a dark 404 on a dark-mode OS. Same
+       three-state contract and same localStorage key as the main page. */
+    (function() {
+        var t = null;
+        try { t = localStorage.getItem('skrivist-theme'); } catch(e) {}
+        if (t) document.documentElement.setAttribute('data-theme', t);
+    })();
+    </script>
     <style>
+        /* Colors go through custom properties so both themes work — see CLAUDE.md. */
+        :root {
+            --bg-gradient-1: #dae8f3;
+            --bg-gradient-2: #f5f7f5;
+            --bg-gradient-3: #d5ecd0;
+            --text-primary: #2c3e50;
+        }
+        [data-theme="dark"] {
+            --bg-gradient-1: #0f1923;
+            --bg-gradient-2: #141e28;
+            --bg-gradient-3: #111d1a;
+            --text-primary: #e2e8f0;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg-gradient-1: #0f1923;
+                --bg-gradient-2: #141e28;
+                --bg-gradient-3: #111d1a;
+                --text-primary: #e2e8f0;
+            }
+        }
         body {
             margin: 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #dae8f3, #f5f7f5, #d5ecd0);
+            background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
             font-family: 'Lato', sans-serif;
-            color: #2c3e50;
+            color: var(--text-primary);
             text-align: center;
         }
         main { padding: 2rem; }
@@ -29,7 +60,7 @@
         }
         p { font-weight: 300; margin: 0 0 2rem; }
         a {
-            color: #2c3e50;
+            color: var(--text-primary);
             border-bottom: 1px solid currentColor;
             text-decoration: none;
             padding-bottom: 2px;

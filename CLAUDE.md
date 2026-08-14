@@ -26,6 +26,7 @@
 ├── media/                     # Hero promo video assets, per locale (en, ja, tr, es, pt, de, fr)
 │   ├── skrivist-promo-{lang}.mp4           # landscape 16:9 (desktop)
 │   ├── skrivist-promo-{lang}-vertical.mp4  # portrait 9:16 (mobile)
+│   ├── captions-{lang}[-vertical].vtt      # WebVTT captions (derived from promo VO scripts)
 │   └── poster-{lang}[-vertical].jpg        # poster frames
 ├── .github/workflows/deploy.yml  # Manual-dispatch Cloudflare Pages deploy
 ├── .project-instructions.md   # Design/SEO context for developers

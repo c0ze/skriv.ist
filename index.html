@@ -13,6 +13,8 @@
     <meta property="og:description" content="A calm, distraction-free reading app. Where stories find their breath." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://skriv.ist/" />
+    <meta property="og:site_name" content="skriv.ist" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:image" content="https://skriv.ist/media/poster-en.jpg" />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1080" />
@@ -27,7 +29,7 @@
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "skriv.ist",
-      "applicationCategory": "ReadingApp",
+      "applicationCategory": "MultimediaApplication",
       "operatingSystem": "Web",
       "description": "skriv.ist is a minimalist reading app designed for deep focus. Enjoy a distraction-free environment, offline PWA access, and seamless EPUB cloud sync.",
       "url": "https://skriv.ist/",
@@ -1038,6 +1040,14 @@
             border-radius: 8px;
         }
 
+        /* The dropdown clips to its rounded corners (overflow: hidden), so an
+           outset ring on a full-width option would have both sides — plus the
+           first row's top edge and the last row's bottom edge — shaved off.
+           Draw the option ring inside the row so it stays whole. */
+        .lang-option:focus-visible {
+            outline-offset: -4px;
+        }
+
         /* --- honor reduced-motion preferences --- */
         @media (prefers-reduced-motion: reduce) {
             .particle,
@@ -1090,7 +1100,9 @@
         if (t) document.documentElement.setAttribute('data-theme', t);
         var l = null;
         try { l = localStorage.getItem('skrivist-lang'); } catch(e) {}
-        if (l) document.documentElement.setAttribute('lang', l);
+        if (l && ['en', 'ja', 'tr', 'es', 'pt', 'de', 'fr'].indexOf(l) !== -1) {
+            document.documentElement.setAttribute('lang', l);
+        }
     })();
     </script>
 
@@ -1118,18 +1130,21 @@
     <div class="container">
         <div class="top-bar">
             <div class="lang-picker" id="langPicker">
-                <button class="lang-picker-btn" type="button" aria-label="Change language" title="Change language">
+                <button class="lang-picker-btn" type="button" aria-label="Change language" title="Change language" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown">
                     <span id="langLabel">EN</span>
                     <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1.5 6 6.5 11 1.5"></polyline></svg>
                 </button>
-                <div class="lang-dropdown" role="listbox" aria-label="Language">
-                    <button class="lang-option active" role="option" data-lang="en">English</button>
-                    <button class="lang-option" role="option" data-lang="ja">日本語</button>
-                    <button class="lang-option" role="option" data-lang="tr">Türkçe</button>
-                    <button class="lang-option" role="option" data-lang="es">Español</button>
-                    <button class="lang-option" role="option" data-lang="pt">Português</button>
-                    <button class="lang-option" role="option" data-lang="de">Deutsch</button>
-                    <button class="lang-option" role="option" data-lang="fr">Français</button>
+                <!-- Listbox popup: the toggle above owns the picker's only tab
+                     stop, so the options stay out of the tab order and are
+                     reached with the arrow keys (see focusOption below). -->
+                <div class="lang-dropdown" id="langDropdown" role="listbox" aria-label="Language">
+                    <button class="lang-option active" role="option" aria-selected="true" tabindex="-1" data-lang="en">English</button>
+                    <button class="lang-option" role="option" aria-selected="false" tabindex="-1" data-lang="ja">日本語</button>
+                    <button class="lang-option" role="option" aria-selected="false" tabindex="-1" data-lang="tr">Türkçe</button>
+                    <button class="lang-option" role="option" aria-selected="false" tabindex="-1" data-lang="es">Español</button>
+                    <button class="lang-option" role="option" aria-selected="false" tabindex="-1" data-lang="pt">Português</button>
+                    <button class="lang-option" role="option" aria-selected="false" tabindex="-1" data-lang="de">Deutsch</button>
+                    <button class="lang-option" role="option" aria-selected="false" tabindex="-1" data-lang="fr">Français</button>
                 </div>
             </div>
             <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
@@ -1176,6 +1191,7 @@
                     muted
                     aria-label="skriv.ist promotional video">
                     <source id="heroVideoSource" src="/media/skrivist-promo-en.mp4" type="video/mp4">
+                    <track id="heroVideoTrack" kind="captions" src="/media/captions-en.vtt" srclang="en" label="English" default>
                 </video>
 
                 <div class="cta-group hero-entrance" style="animation-delay: 0.32s;">
@@ -1629,6 +1645,34 @@
             if (sourceEl.getAttribute('src') === newSrc) return;
             sourceEl.setAttribute('src', newSrc);
             videoEl.setAttribute('poster', '/media/poster-' + currentLang + suffix + '.jpg');
+            /* Swap the caption track with a fresh element: mutating <track>
+               src in place leaves stale cues in Safari/Chrome, and .track can
+               still be null there. Guarded so captions can never abort
+               applyLang. */
+            try {
+                var trackEl = document.getElementById('heroVideoTrack');
+                if (trackEl) {
+                    /* Carry the current mode across the swap, so changing
+                       language doesn't force captions back on for someone who
+                       turned them off in the native controls. */
+                    var prevMode = (trackEl.track && trackEl.track.mode) || 'showing';
+                    var newTrack = document.createElement('track');
+                    newTrack.setAttribute('id', 'heroVideoTrack');
+                    newTrack.setAttribute('kind', 'captions');
+                    newTrack.setAttribute('src', '/media/captions-' + currentLang + suffix + '.vtt');
+                    newTrack.setAttribute('srclang', currentLang);
+                    var opt = picker.querySelector('.lang-option[data-lang="' + currentLang + '"]');
+                    if (opt) newTrack.setAttribute('label', opt.textContent);
+                    newTrack.setAttribute('default', '');
+                    trackEl.parentNode.replaceChild(newTrack, trackEl);
+                    /* Set the mode straight away instead of from a 'load'
+                       handler. A dynamically inserted track starts disabled,
+                       and a disabled track is never fetched — so waiting for
+                       'load' to enable it deadlocks: the event that would
+                       enable the track cannot fire until it is enabled. */
+                    if (newTrack.track) newTrack.track.mode = prevMode;
+                }
+            } catch (e) {}
             videoEl.load();
         }
 
@@ -1667,8 +1711,10 @@
             for (var k = 0; k < options.length; k++) {
                 if (options[k].getAttribute('data-lang') === lang) {
                     options[k].classList.add('active');
+                    options[k].setAttribute('aria-selected', 'true');
                 } else {
                     options[k].classList.remove('active');
+                    options[k].setAttribute('aria-selected', 'false');
                 }
             }
 
@@ -1678,24 +1724,97 @@
         /* ===== LANGUAGE PICKER ===== */
         var picker = document.getElementById('langPicker');
         var pickerBtn = picker.querySelector('.lang-picker-btn');
+        var langOptions = picker.querySelectorAll('.lang-option');
+
+        function setPickerOpen(open) {
+            picker.classList.toggle('open', open);
+            pickerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+
+        /* Close, and hand focus back to the toggle when the close was driven
+           from the keyboard — hiding the dropdown while an option still holds
+           focus would drop focus onto <body>. */
+        function closePicker(restoreFocus) {
+            setPickerOpen(false);
+            if (restoreFocus) pickerBtn.focus();
+        }
+
+        function activeOption() {
+            return picker.querySelector('.lang-option.active') || langOptions[0];
+        }
+
+        /* Focus model: the options are held out of the tab order
+           (tabindex="-1" in the markup), so Tab enters the picker at the
+           toggle and leaves it in one press instead of walking all seven
+           languages. Real DOM focus roves between the options here, which is
+           what exposes the active one — and its position within the listbox —
+           to assistive tech. Wraps; when focus isn't on an option yet (e.g.
+           opening via ArrowDown), it lands on the selected one. */
+        function focusOption(delta) {
+            var idx = -1;
+            for (var i = 0; i < langOptions.length; i++) {
+                if (langOptions[i] === document.activeElement) { idx = i; break; }
+            }
+            if (idx === -1) {
+                activeOption().focus();
+                return;
+            }
+            langOptions[(idx + delta + langOptions.length) % langOptions.length].focus();
+        }
 
         pickerBtn.addEventListener('click', function(e) {
             e.stopPropagation();
-            picker.classList.toggle('open');
+            setPickerOpen(!picker.classList.contains('open'));
         });
 
-        var langOptions = picker.querySelectorAll('.lang-option');
         for (var i = 0; i < langOptions.length; i++) {
             langOptions[i].addEventListener('click', function(e) {
                 e.stopPropagation();
                 applyLang(this.getAttribute('data-lang'));
-                picker.classList.remove('open');
+                /* Same restore as Escape: the option that was just activated
+                   is about to be hidden, so focus has to move somewhere real.
+                   Mouse users don't see a ring — :focus-visible stays off. */
+                closePicker(true);
             });
         }
 
+        /* Keyboard support: ArrowUp/Down navigate (and open), Home/End jump to
+           the ends, Escape closes and returns focus to the toggle. Enter/Space
+           on an option activate it natively; on the toggle they open the
+           listbox, which must then put focus on the selected option — with no
+           aria-activedescendant, real DOM focus is the only thing that tells a
+           screen reader where it is. */
+        picker.addEventListener('keydown', function(e) {
+            var open = picker.classList.contains('open');
+            var onToggle = e.target === pickerBtn;
+            if (e.key === 'Escape' && open) {
+                e.preventDefault();
+                closePicker(true);
+            } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (!open) setPickerOpen(true);
+                focusOption(e.key === 'ArrowDown' ? 1 : -1);
+            } else if ((e.key === 'Enter' || e.key === ' ') && onToggle && !open) {
+                e.preventDefault();
+                setPickerOpen(true);
+                activeOption().focus();
+            } else if ((e.key === 'Home' || e.key === 'End') && open) {
+                e.preventDefault();
+                langOptions[e.key === 'Home' ? 0 : langOptions.length - 1].focus();
+            }
+        });
+
+        /* Tabbing (or clicking) away from the picker closes it, so an open
+           dropdown can't be left painted over the page once it is no longer
+           reachable. relatedTarget is null when focus goes nowhere, and
+           contains(null) is false, so that closes too. */
+        picker.addEventListener('focusout', function(e) {
+            if (!picker.contains(e.relatedTarget)) setPickerOpen(false);
+        });
+
         /* Close dropdown on outside click */
         document.addEventListener('click', function() {
-            picker.classList.remove('open');
+            setPickerOpen(false);
         });
 
         /* Restore stored language */
