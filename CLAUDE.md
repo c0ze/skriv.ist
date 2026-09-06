@@ -56,15 +56,17 @@
 
 **Light Palette (CSS custom properties):**
 - `--bg-gradient-1: #dae8f3` / `--bg-gradient-2: #f5f7f5` / `--bg-gradient-3: #d5ecd0`
-- `--text-primary: #1a2b3c` / `--text-secondary: #5a6e7a` / `--text-tertiary: #8a9aa6`
+- `--text-primary: #1a2b3c` / `--text-secondary: #5a6e7a` / `--text-tertiary: #5f7280`
 - `--accent-primary: #6a9fc0` / `--accent-secondary: #7db88a`
 - `--surface-primary: rgba(255,255,255,0.9)`
+- `--button-text: #1a2b3c` (dark ink on the accent-gradient CTAs; white failed WCAG AA)
 
 **Dark Palette:**
 - `--bg-gradient-1: #0f1923` / `--bg-gradient-2: #141e28` / `--bg-gradient-3: #111d1a`
-- `--text-primary: #e2e8f0` / `--text-secondary: #94a3b8` / `--text-tertiary: #64748b`
+- `--text-primary: #e2e8f0` / `--text-secondary: #94a3b8` / `--text-tertiary: #8a99ad`
 - `--accent-primary: #7cb5d6` / `--accent-secondary: #8ec99a`
 - `--surface-primary: rgba(20,30,40,0.85)`
+- `--button-text: #0f1923`
 
 ## Key Conventions
 
@@ -74,7 +76,7 @@
 - **Preserve the aesthetic** - refined Nordic minimalism. Layered shadows, 16px container radius, 10px input/button radius.
 - **Top bar** - `.top-bar` in top-right of container holds the language picker and theme toggle side by side.
 - **Theme toggle** - sun/moon SVG icons. `.theme-toggle` styles must override inherited `button` styles.
-- **Language picker** - dropdown with 7 languages (EN, JA, TR, ES, PT, DE, FR). Stored in `localStorage` key `skrivist-lang`. All translatable text uses `data-i18n` attributes; placeholders use `data-i18n-placeholder`.
+- **Language picker** - dropdown with 7 languages (EN, JA, TR, ES, PT, DE, FR). Stored in `localStorage` key `skrivist-lang`. All translatable text uses `data-i18n` attributes; placeholders use `data-i18n-placeholder`; accessible names use `data-i18n-aria`.
 - **Primary CTA** - "Start Reading for Free" links to the app at `app.skriv.ist`; the hero promo video and pricing tiers (Free / Maker / Member) support conversion. There is no email/waitlist form.
 - **Mobile responsive** - media queries at the 600px breakpoint for mobile layout.
 - **Hero promo video** - locale-aware (swaps per language) and orientation-aware: `updateHeroVideo()` serves the vertical 9:16 cut on mobile (≤600px) and the landscape 16:9 cut on desktop, keyed to the same 600px breakpoint as the CSS. Sources and posters follow `media/skrivist-promo-{lang}[-vertical].mp4` / `media/poster-{lang}[-vertical].jpg`.
@@ -86,7 +88,7 @@
 - Deploying: merge to `master`, then dispatch the "Deploy" workflow (`gh workflow run deploy.yml`). Nothing deploys automatically.
 - Test locally by serving the folder (e.g. `python3 -m http.server`) — the hero video and posters use absolute `/media/...` paths, so opening via `file://` won't load them.
 - When adding colors, always add to both light and dark theme variable blocks (`:root`, `[data-theme="dark"]`, and `@media (prefers-color-scheme: dark)` block).
-- When adding translatable text, add `data-i18n="keyName"` attribute to the element and add the key to all 7 language objects in the `T` translations object in the JS block. For placeholders, use `data-i18n-placeholder="keyName"`.
+- When adding translatable text, add `data-i18n="keyName"` attribute to the element and add the key to all 7 language objects in the `T` translations object in the JS block. For placeholders, use `data-i18n-placeholder="keyName"`. For accessible names, use `data-i18n-aria="keyName"` (`applyLang` sets `aria-label`).
 
 ## i18n System
 
